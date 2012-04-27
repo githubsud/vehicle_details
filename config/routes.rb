@@ -1,4 +1,8 @@
 VehicleDetails::Application.routes.draw do
+  resources :notes
+
+  resources :checklists
+
   resources :vehicles
 
   # The priority is based upon order of creation:

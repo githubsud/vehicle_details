@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @checklist.title %>
+</p>
+
+<p>
+  <b>Vehicle:</b>
+  <%= @checklist.vehicle.number %>
+</p>
+
+
+<%= link_to 'Edit', edit_checklist_path(@checklist, :vehicle_id => @checklist.vehicle_id) %> |
+<%= link_to 'Back', checklists_path(:vehicle_id => @checklist.vehicle_id) %>

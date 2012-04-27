@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120427002609) do
+ActiveRecord::Schema.define(:version => 20120427023235) do
+
+  create_table "checklists", :force => true do |t|
+    t.string   "title"
+    t.integer  "vehicle_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "notes", :force => true do |t|
+    t.string   "title"
+    t.integer  "vehicle_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "vehicles", :force => true do |t|
     t.string   "number"

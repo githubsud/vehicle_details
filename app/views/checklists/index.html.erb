@@ -1,0 +1,26 @@
+<h1>Listing checklists</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Vehicle</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @checklists.each do |checklist| %>
+  <tr>
+    <td><%= checklist.title %></td>
+    <td><%= checklist.vehicle_id %></td>
+    <td><%= link_to 'Show', checklist %></td>
+    <td><%= link_to 'Edit', edit_checklist_path(checklist) %></td>
+    <td><%= link_to 'Destroy', checklist, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<!-- <%= link_to 'New Checklist', new_checklist_path %> -->
+<%= link_to 'New Vehicle checklist', new_checklist_path(:vehicle_id => params[:vehicle_id]) %>
