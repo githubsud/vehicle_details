@@ -4,7 +4,7 @@ class ChecklistsController < ApplicationController
   def index
     # @checklists = Checklist.all
     @checklists = Checklist.where("vehicle_id = ?", params[:vehicle_id])
-
+    @vehicle = Vehicle.find_by_id(params[:vehicle_id])
 
     respond_to do |format|
       format.html # index.html.erb
