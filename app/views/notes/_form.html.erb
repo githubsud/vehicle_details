@@ -15,10 +15,11 @@
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :vehicle_id %><br />
     <%= f.number_field :vehicle_id %>
-  </div>
+  </div> -->
+  <%= f.hidden_field :vehicle_id, :value => params[:vehicle_id] ? params[:vehicle_id] : @note.vehicle_id %>
   <div class="actions">
     <%= f.submit %>
   </div>

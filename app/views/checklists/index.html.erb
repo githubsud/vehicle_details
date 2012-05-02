@@ -1,8 +1,10 @@
 <h1>Listing checklists</h1>
-Vehicle ID: <%= @vehicle.id %><br />
-Vehicle number: <%= @vehicle.number %><br />
-Vehicle created: <%= @vehicle.created_at %><br />
-Vehicle updated: <%= @vehicle.updated_at %>
+<% if @vehicle %>
+	Vehicle ID: <%= @vehicle.id %><br />
+	Vehicle number: <%= @vehicle.number %><br />
+	Vehicle created: <%= @vehicle.created_at %><br />
+	Vehicle updated: <%= @vehicle.updated_at %>
+<% end %>
 <table>
   <tr>
     <th>Title</th>
@@ -26,4 +28,4 @@ Vehicle updated: <%= @vehicle.updated_at %>
 <br />
 
 <!-- <%= link_to 'New Checklist', new_checklist_path %> -->
-<%= link_to 'New Vehicle checklist', new_checklist_path(:vehicle_id => params[:vehicle_id]) %>
+<%= link_to 'New Vehicle Checklist', new_checklist_path(:vehicle_id => params[:vehicle_id]) %>

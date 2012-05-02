@@ -7,9 +7,11 @@
 
 <p>
   <b>Vehicle:</b>
-  <%= @note.vehicle_id %>
+  <!-- <%= @note.vehicle_id %> -->
+  <%= @note.vehicle.number %>
 </p>
 
-
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>
+<!-- <%= link_to 'Edit', edit_note_path(@note) %> |
+<%= link_to 'Back', notes_path %> -->
+<%= link_to 'Edit', edit_note_path(@note, :vehicle_id => @note.vehicle_id) %> |
+<%= link_to 'Back', notes_path(:vehicle_id => @note.vehicle_id) %>

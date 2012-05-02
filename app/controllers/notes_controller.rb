@@ -2,7 +2,9 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    # @notes = Note.all
+    @notes = Note.where("vehicle_id = ?", params[:vehicle_id])
+    @vehicle = Vehicle.find_by_id(params[:vehicle_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -73,10 +75,11 @@ class NotesController < ApplicationController
   # DELETE /notes/1.json
   def destroy
     @note = Note.find(params[:id])
+    vehicle_id = @note.vehicle_id
     @note.destroy
 
     respond_to do |format|
-      format.html { redirect_to notes_url }
+      format.html { redirect_to notes_url(:vehicle_id => vehicle_id) }
       format.json { head :no_content }
     end
   end
