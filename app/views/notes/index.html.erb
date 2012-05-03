@@ -18,14 +18,13 @@
   <tr>
     <td><%= note.title %></td>
     <td><%= note.vehicle_id %></td>
-    <td><%= link_to 'Show', note %></td>
-    <td><%= link_to 'Edit', edit_note_path(note) %></td>
-    <td><%= link_to 'Destroy', note, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', vehicle_note_path(@vehicle, note) %></td>
+    <td><%= link_to 'Edit', edit_vehicle_note_path(@vehicle, note) %></td>
+    <td><%= link_to 'Destroy', [@vehicle, note], confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<!-- <%= link_to 'New Note', new_note_path %> -->
-<%= link_to 'New Vehicle Note', new_note_path(:vehicle_id => params[:vehicle_id]) %>
+<%= link_to 'New Vehicle Note', new_vehicle_note_path(@vehicle) %>

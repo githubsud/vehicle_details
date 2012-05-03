@@ -1,10 +1,7 @@
 class NotesController < ApplicationController
-  # GET /notes
-  # GET /notes.json
   def index
-    # @notes = Note.all
-    @notes = Note.where("vehicle_id = ?", params[:vehicle_id])
-    @vehicle = Vehicle.find_by_id(params[:vehicle_id])
+    @vehicle = Vehicle.find(params[:vehicle_id])
+    @notes = @vehicle.notes
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,10 +9,9 @@ class NotesController < ApplicationController
     end
   end
 
-  # GET /notes/1
-  # GET /notes/1.json
   def show
-    @note = Note.find(params[:id])
+    @vehicle = Vehicle.find(params[:vehicle_id])
+    @note = @vehicle.notes.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -23,10 +19,9 @@ class NotesController < ApplicationController
     end
   end
 
-  # GET /notes/new
-  # GET /notes/new.json
   def new
-    @note = Note.new
+    @vehicle = Vehicle.find(params[:vehicle_id])
+    @note = @vehicle.notes.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,19 +29,18 @@ class NotesController < ApplicationController
     end
   end
 
-  # GET /notes/1/edit
   def edit
-    @note = Note.find(params[:id])
+    @vehicle = Vehicle.find(params[:vehicle_id])
+    @note = @vehicle.notes.find(params[:id])
   end
 
-  # POST /notes
-  # POST /notes.json
   def create
-    @note = Note.new(params[:note])
+    @vehicle = Vehicle.find(params[:vehicle_id])
+    @note = @vehicle.notes.new(params[:note])
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
+        format.html { redirect_to vehicle_note_path(@vehicle, @note), notice: 'Note was successfully created.' }
         format.json { render json: @note, status: :created, location: @note }
       else
         format.html { render action: "new" }
@@ -55,14 +49,13 @@ class NotesController < ApplicationController
     end
   end
 
-  # PUT /notes/1
-  # PUT /notes/1.json
   def update
-    @note = Note.find(params[:id])
+    @vehicle = Vehicle.find(params[:vehicle_id])
+    @note = @vehicle.notes.find(params[:id])
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
+        format.html { redirect_to vehicle_note_path(@vehicle, @note), notice: 'Note was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -71,15 +64,13 @@ class NotesController < ApplicationController
     end
   end
 
-  # DELETE /notes/1
-  # DELETE /notes/1.json
   def destroy
-    @note = Note.find(params[:id])
-    vehicle_id = @note.vehicle_id
+    @vehicle = Vehicle.find(params[:vehicle_id])
+    @note = @vehicle.notes.find(params[:id])
     @note.destroy
 
     respond_to do |format|
-      format.html { redirect_to notes_url(:vehicle_id => vehicle_id) }
+      format.html { redirect_to vehicle_notes_url(@vehicle) }
       format.json { head :no_content }
     end
   end
