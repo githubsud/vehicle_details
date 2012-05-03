@@ -2,6 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @checklist %> |
-<!-- <%= link_to 'Back', checklists_path %> -->
-<%= link_to 'Back', checklists_path(:vehicle_id => @checklist.vehicle_id) %>
+<%= link_to 'Show', vehicle_checklist_path(@vehicle, @checklist) %> |
+<%= link_to 'Back', vehicle_checklists_path(@vehicle) %>
