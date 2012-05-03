@@ -2,5 +2,4 @@
 
 <%= render 'form' %>
 
-<!-- <%= link_to 'Back', notes_path %> -->
-<%= link_to 'Back', notes_path(:vehicle_id => params[:vehicle_id]) %>
+<%= link_to 'Back', vehicle_notes_path(@vehicle) %>

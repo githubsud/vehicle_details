@@ -13,8 +13,8 @@
 <% @vehicles.each do |vehicle| %>
   <tr>
     <td><%= vehicle.number %></td>
-    <td><%= link_to 'Checklists', checklists_url(:vehicle_id => vehicle.id) %></td>
-    <td><%= link_to 'Notes', notes_url(:vehicle_id => vehicle.id) %></td>
+    <td><%= link_to 'Checklists', vehicle_checklists_url(vehicle) %></td>
+    <td><%= link_to 'Notes', vehicle_notes_url(vehicle) %></td>
     <td><%= link_to 'Show', vehicle %></td>
     <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
     <td><%= link_to 'Destroy', vehicle, confirm: 'Are you sure?', method: :delete %></td>
